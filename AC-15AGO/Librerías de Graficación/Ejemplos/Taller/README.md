@@ -1,0 +1,10 @@
+En este ejercicio de desarrollo web utilizando HTML, JavaScript y CSS, aprendi conceptos fundamentales sobre el sistema de coordenadas y la graficación de elementos canvas, acontinuación presentare con más detalle lo aprendido: 
+
+->En cuanto a coordenadas cartesianas puedo mencionar lo siguiente: este sistema de coordenadas es bidimensional, donde cualquier punto en el plano se puede definir por un par de valores (x,y). El valor de x representa la posición horizontal dentro del plano, y la Y representa su posición vertical. Es el sistema más comúnmente utilizado para graficar figuras en un lienzo. 
+  
+->En cuanto a coordenadas polares puedo mencionar lo siguiente: este sistema define un punto por un radio y un ángulo (r,θ). El radio (r) es la distancia desde el origen, y el ángulo (θ) se mide desde el eje positivo de X. Este ejercicio me dio la posibilidad de aprender a convertir de coordenadas polares a cartesianas y viceversa, lo que permite graficar puntos definidos en coordenadas polares a un sistema cartesiano.
+
+->En cuanto a la manipulación del Canva: el elemento "canva" en HTML nos permite la creación de un lienzo el cual elabora gráficos directamente en la pagina web. Aprendi a obtener contexto de dibujo en 2D utilizando "getContext", lo que nos permite dibujar figuras geométricas como círculos, cuadrados, triángulos y rectángulos. 
+
+
+->En cuanto a la interactividad con el usuario: aprendí a hacer una aplicación interactiva, permitiendo seleccionar por medio del teclado diferentes figuras, colores, especificar coordenadas para dibujarlas en el lienzo. Implementamos eventos como "click" en un botón para iniciar la acción de dibujar a figura seleccionada en coordenadas especificas. Por otro lado, se manejo las entradas de usuario para convertir valores y asegurar que las figuras se dibujen correctamente, ya sea que las coordenadas se den en formato cartesiano o polar. 
