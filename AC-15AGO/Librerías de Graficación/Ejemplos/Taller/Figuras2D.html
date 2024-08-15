@@ -10,7 +10,20 @@
             margin: 20px;
             background-color: #e40f0b; /* Color de fondo rojo claro */
         }
-        h1, h2 {
+        h1 {
+            color: #fff; /* Color blanco para el título */
+            text-align: center; /* Centrar el título */
+            font-size: 2.5em; /* Tamaño de fuente más grande */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+            margin-bottom: 10px; /* Espacio debajo del título */
+        }
+        .welcome-message {
+            text-align: center; /* Centrar el mensaje de bienvenida */
+            color: #fff; /* Color blanco para el mensaje */
+            font-size: 1.2em; /* Tamaño de fuente del mensaje */
+            margin-bottom: 20px; /* Espacio debajo del mensaje */
+        }
+        h2 {
             color: #333;
         }
         label {
@@ -22,8 +35,9 @@
             align-items: flex-start; /* Alinear elementos al inicio */
         }
         canvas {
-            border: 1px solid #000;
+            border: 2px solid #000; /* Borde más grueso y negro para el canvas */
             margin-top: 20px;
+            background-color: #fff; /* Fondo blanco para el canvas */
         }
         .input-container {
             display: flex;
@@ -48,6 +62,8 @@
         }
         #dibujar {
             margin-top: 20px; /* Espacio superior para el botón */
+            border: 2px solid #000; /* Borde más grueso y negro para el botón */
+            background-color: #fff; /* Fondo blanco para el botón */
         }
         .button-container {
             margin-left: 20px; /* Espacio entre el canvas y el botón */
@@ -62,6 +78,9 @@
 </head>
 <body>
     <h1>Trazado de Figuras</h1>
+    <div class="welcome-message">
+        Bienvenido a la aplicación de Trazado de Figuras. Aquí puedes seleccionar diferentes figuras, elegir su color y tamaño, y especificar sus coordenadas. Al hacer clic en "Dibujar Figura", verás la figura representada en el lienzo. ¡Diviértete creando!
+    </div>
 
     <h2>Figura</h2>
     <label for="figura">Selecciona una figura:</label>

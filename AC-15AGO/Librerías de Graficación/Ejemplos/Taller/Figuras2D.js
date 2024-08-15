@@ -38,6 +38,8 @@ document.getElementById('dibujar').addEventListener('click', function() {
 
     // Establecer el color de la figura
     ctx.fillStyle = color;
+    ctx.strokeStyle = '#000'; // Establecer el color del borde a negro
+    ctx.lineWidth = 3; // Establecer el grosor del borde
 
     // Dibujar la figura seleccionada
     switch (figura) {
@@ -45,10 +47,12 @@ document.getElementById('dibujar').addEventListener('click', function() {
             ctx.beginPath(); // Iniciar un nuevo camino
             ctx.arc(coordenadaX, coordenadaY, tamano, 0, Math.PI * 2); // Dibujar un círculo
             ctx.fill(); // Rellenar el círculo
+            ctx.stroke(); // Dibujar el borde
             ctx.closePath(); // Cerrar el camino
             break;
         case 'cuadrado':
             ctx.fillRect(coordenadaX - tamano / 2, coordenadaY - tamano / 2, tamano, tamano); // Dibujar un cuadrado
+            ctx.strokeRect(coordenadaX - tamano / 2, coordenadaY - tamano / 2, tamano, tamano); // Dibujar el borde
             break;
         case 'triangulo':
             ctx.beginPath(); // Iniciar un nuevo camino
@@ -57,9 +61,11 @@ document.getElementById('dibujar').addEventListener('click', function() {
             ctx.lineTo(coordenadaX + tamano / 2, coordenadaY + tamano / 2); // 
             ctx.closePath(); // Cerrar el camino
             ctx.fill(); // Rellenar el triángulo
+            ctx.stroke(); // Dibujar el borde
             break;
         case 'rectangulo':
             ctx.fillRect(coordenadaX - tamano, coordenadaY - tamano / 2, tamano * 2, tamano); // Dibujar un rectángulo
+            ctx.strokeRect(coordenadaX - tamano, coordenadaY - tamano / 2, tamano * 2, tamano); // Dibujar el borde
             break;
     }
 });
