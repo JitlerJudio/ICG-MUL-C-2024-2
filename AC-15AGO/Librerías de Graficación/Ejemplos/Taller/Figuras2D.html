@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazado de Figuras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        canvas {
+            border: 1px solid #000;
+            margin-top: 20px;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+        .input-container label {
+            margin-right: 10px;
+        }
+        .input-container select, .input-container input {
+            margin-right: 20px;
+        }
+        .coordinates-container {
+            display: flex;
+            align-items: center;
+        }
+        .coordinates-container input {
+            margin-right: 10px; /* espacio entre X e Y */
+        }
+        #mensaje {
+            margin-top: 20px;
+            color: #007BFF; /* color del mensaje */
+        }
+    </style>
+</head>
+<body>
+    <h1>Trazado de Figuras</h1>
+    
+    <h2>Figura</h2>
+    <label for="figura">Selecciona una figura:</label>
+    <select id="figura">
+        <option value="circulo">Círculo</option>
+        <option value="cuadrado">Cuadrado</option>
+        <option value="triangulo">Triángulo</option>
+        <option value="rectangulo">Rectángulo</option>
+    </select>
+
+    <h2>Color y Tamaño</h2>
+    <div class="input-container">
+        <label for="color">Selecciona un color:</label>
+        <select id="color">
+            <option value="blue">Azul</option>
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="orange">Naranja</option>
+            <option value="purple">Púrpura</option>
+        </select>
+        
+        <label for="tamano">Tamaño:</label>
+        <input type="text" id="tamano" placeholder="Tamaño de la figura">
+    </div>
+    
+    <h2>Coordenadas</h2>
+    <label>Selecciona el tipo de coordenadas:</label>
+    <label><input type="radio" name="coordenadas" value="cartesianas" checked> Cartesianas</label>
+    <label><input type="radio" name="coordenadas" value="polares"> Polares</label>
+    
+    <h2>Coordenadas X e Y</h2>
+    <div class="coordinates-container">
+        <div>
+            <label for="coordenadaX">Ingresa la coordenada X:</label>
+            <input type="text" id="coordenadaX" placeholder="Coordenada X">
+        </div>
+        <div>
+            <label for="coordenadaY">Ingresa la coordenada Y:</label>
+            <input type="text" id="coordenadaY" placeholder="Coordenada Y">
+        </div>
+    </div>
+    
+    <button id="dibujar">Dibujar Figura</button>
+    
+    <canvas id="canvas" width="400" height="400"></canvas>
+    
+    <div id="mensaje"></div> <!-- Contenedor para mensajes -->
+    <script src="Figuras2D.js"></script> <!-- Enlace al archivo JavaScript externo -->
+</body>
+</html>
