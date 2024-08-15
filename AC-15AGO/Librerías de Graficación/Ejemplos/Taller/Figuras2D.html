@@ -6,8 +6,9 @@
     <title>Trazado de Figuras</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Agency FB', Arial, sans-serif; /* Cambiar a Agency FB */
             margin: 20px;
+            background-color: #e40f0b; /* Color de fondo rojo claro */
         }
         h1, h2 {
             color: #333;
@@ -45,7 +46,7 @@
 </head>
 <body>
     <h1>Trazado de Figuras</h1>
-    
+
     <h2>Figura</h2>
     <label for="figura">Selecciona una figura:</label>
     <select id="figura">
@@ -65,16 +66,16 @@
             <option value="orange">Naranja</option>
             <option value="purple">Púrpura</option>
         </select>
-        
+
         <label for="tamano">Tamaño:</label>
         <input type="text" id="tamano" placeholder="Tamaño de la figura">
     </div>
-    
+
     <h2>Coordenadas</h2>
     <label>Selecciona el tipo de coordenadas:</label>
     <label><input type="radio" name="coordenadas" value="cartesianas" checked> Cartesianas</label>
     <label><input type="radio" name="coordenadas" value="polares"> Polares</label>
-    
+
     <h2>Coordenadas X e Y</h2>
     <div class="coordinates-container">
         <div>
@@ -86,11 +87,11 @@
             <input type="text" id="coordenadaY" placeholder="Coordenada Y">
         </div>
     </div>
-    
+
     <button id="dibujar">Dibujar Figura</button>
-    
+
     <canvas id="canvas" width="400" height="400"></canvas>
-    
+
     <div id="mensaje"></div> <!-- Contenedor para mensajes -->
     <script src="Figuras2D.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
