@@ -17,6 +17,10 @@
             display: block;
             margin-top: 10px;
         }
+        .container {
+            display: flex; /* Usar flexbox para el diseño */
+            align-items: flex-start; /* Alinear elementos al inicio */
+        }
         canvas {
             border: 1px solid #000;
             margin-top: 20px;
@@ -41,6 +45,18 @@
         #mensaje {
             margin-top: 20px;
             color: #007BFF; /* color del mensaje */
+        }
+        #dibujar {
+            margin-top: 20px; /* Espacio superior para el botón */
+        }
+        .button-container {
+            margin-left: 20px; /* Espacio entre el canvas y el botón */
+        }
+        .message-container {
+            display: flex;
+            flex-direction: column; /* Alinear el mensaje verticalmente */
+            justify-content: flex-start; /* Alinear al inicio */
+            margin-left: 20px; /* Espacio entre el botón y el mensaje */
         }
     </style>
 </head>
@@ -80,19 +96,24 @@
     <div class="coordinates-container">
         <div>
             <label for="coordenadaX">Ingresa la coordenada X:</label>
-            <input type="text" id="coordenadaX" placeholder="Coordenada X">
+            <input type="text" id="coordenadaX" placeholder="Coordenada X o Radio polar">
         </div>
         <div>
             <label for="coordenadaY">Ingresa la coordenada Y:</label>
-            <input type="text" id="coordenadaY" placeholder="Coordenada Y">
+            <input type="text" id="coordenadaY" placeholder="Coordenada Y o Ángulo polar">
         </div>
     </div>
 
-    <button id="dibujar">Dibujar Figura</button>
+    <div class="container">
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <div class="button-container">
+            <button id="dibujar">Dibujar Figura</button>
+        </div>
+        <div class="message-container">
+            <div id="mensaje"></div> <!-- Contenedor para mensajes -->
+        </div>
+    </div>
 
-    <canvas id="canvas" width="400" height="400"></canvas>
-
-    <div id="mensaje"></div> <!-- Contenedor para mensajes -->
     <script src="Figuras2D.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>
