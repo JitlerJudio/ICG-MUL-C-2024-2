@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo de Polígonos</title>
+</head>
+<body>
+    <h1>Dibujo de Polígonos</h1>
+    <label for="tipoCoordenada">Tipo de Coordenada:</label>
+    <select id="tipoCoordenada" onchange="cambiarEntrada()">
+        <option value="cartesiana">Cartesiana</option>
+        <option value="polar">Polar</option>
+    </select>
+
+    <div id="entradaCartesiana">
+        <label for="centroX">Centro X:</label>
+        <input type="number" id="centroX">
+        <label for="centroY">Centro Y:</label>
+        <input type="number" id="centroY">
+    </div>
+
+    <div id="entradaPolar" style="display:none;">
+        <label for="radio">Radio:</label>
+        <input type="number" id="radio">
+        <label for="angulo">Ángulo (grados):</label>
+        <input type="number" id="angulo">
+    </div>
+
+    <label for="n">Número de Lados:</label>
+    <input type="number" id="n">
+
+    <button onclick="iniciarDibujo()">Dibujar Polígono</button>
+
+    <canvas id="canvas" width="400" height="400" style="border:1px solid black;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
