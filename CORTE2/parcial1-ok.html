@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dibujo de Polígonos</title>
 </head>
 <body>
@@ -30,10 +28,21 @@
     <label for="n">Número de Lados:</label>
     <input type="number" id="n">
 
+    <label for="tipoMedida">Tipo de Medida:</label>
+    <select id="tipoMedida">
+        <option value="apotema">Apotema</option>
+        <option value="lado">Lado</option>
+    </select>
+
+    <div id="entradaMedida">
+        <label for="medida">Valor:</label>
+        <input type="number" id="medida">
+    </div>
+
     <button onclick="iniciarDibujo()">Dibujar Polígono</button>
 
     <canvas id="canvas" width="400" height="400" style="border:1px solid black;"></canvas>
 
-    <script src="script.js"></script>
+    <script src="parcial1-ok.js"></script>
 </body>
 </html>
