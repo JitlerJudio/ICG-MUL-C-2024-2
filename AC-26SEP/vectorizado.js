@@ -85,10 +85,37 @@ class Linea extends Forma {
         this.#punto2 = punto2; 
     }
 
-    // Implementación del método dibujar para una línea (ahora dibuja dos puntos)
+    // Implementación del método dibujar para una línea utilizando el algoritmo de Bresenham
     dibujar() {
-        this.#punto1.dibujar(); 
-        this.#punto2.dibujar(); 
+        let x0 = this.#punto1.x;
+        let y0 = this.#punto1.y;
+        let x1 = this.#punto2.x;
+        let y1 = this.#punto2.y;
+
+        let dx = Math.abs(x1 - x0);
+        let dy = Math.abs(y1 - y0);
+        let sx = x0 < x1 ? 1 : -1;
+        let sy = y0 < y1 ? 1 : -1;
+        let err = dx - dy;
+
+        while (true) {
+            this.contexto.beginPath();
+            this.contexto.arc(x0, y0, 2, 0, Math.PI * 2);
+            this.contexto.fill();
+            this.contexto.closePath();
+
+            if (x0 === x1 && y0 === y1) break;
+
+            let e2 = 2 * err;
+            if (e2 > -dy) {
+                err -= dy;
+                x0 += sx;
+            }
+            if (e2 < dx) {
+                err += dx;
+                y0 += sy;
+            }
+        }
     }
 }
 
@@ -108,6 +135,8 @@ class Lienzo {
     agregarForma(forma) {
         this.#formas.push(forma); 
     }
+
+   
 
     // Método para dibujar todas las formas en el lienzo
     dibujar() {
