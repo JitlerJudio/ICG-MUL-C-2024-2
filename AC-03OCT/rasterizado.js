@@ -50,39 +50,27 @@ class Poligono {
         return this.#puntos;
     }
 
-    // Método que dibuja el polígono en un contenedor canvas
-    dibujarPoligonoCanvas(ctx) {
-        // Limpiar el canvas
-        ctx.clearRect(0, 0, 500, 500);
+    // Método que dibuja el polígono en un contenedor Canvas
+    dibujarPoligonoCanvas(canvas) {
+        const ctx = canvas.getContext('2d');
 
-        // Dibujar el polígono
+        // Limpiar el canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Comenzar a dibujar el polígono
         ctx.beginPath();
-        ctx.moveTo(this.#puntos[0].x, this.#puntos[0].y);
-        this.#puntos.forEach(p => {
-            ctx.lineTo(p.x, p.y);
+        this.ordenarPuntosSentidoHorario(); // Asegurarse de que los puntos estén en sentido horario
+        this.#puntos.forEach((p, index) => {
+            if (index === 0) {
+                ctx.moveTo(p.x, p.y);
+            } else {
+                ctx.lineTo(p.x, p.y);
+            }
         });
         ctx.closePath();
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
         ctx.stroke();
-
-        // Calcular el centroide
-        const centroide = this.calcularCentroide();
-        
-        // Dibujar el centroide
-        ctx.fillStyle = "red";
-        ctx.beginPath();
-        ctx.arc(centroide.x, centroide.y, 5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Dibujar líneas desde el centroide hasta cada punto
-        ctx.strokeStyle = "blue";
-        this.#puntos.forEach(p => {
-            ctx.beginPath();
-            ctx.moveTo(centroide.x, centroide.y);
-            ctx.lineTo(p.x, p.y);
-            ctx.stroke();
-        });
     }
 
     // Método para calcular el centroide del polígono
@@ -99,6 +87,18 @@ class Poligono {
 
         // Calcular el promedio (centroide)
         return new Punto(sumaX / numPuntos, sumaY / numPuntos);
+    }
+
+    // Método que ordena los puntos en sentido horario
+    ordenarPuntosSentidoHorario() {
+        const centroide = this.calcularCentroide();
+        this.#puntos.sort((a, b) => {
+            const anguloA = Math.atan2(a.y - centroide.y, a.x - centroide.x);
+            const anguloB = Math.atan2(b.y - centroide.y, b.x - centroide.x);
+            return anguloA - anguloB; // Ordenar en sentido antihorario
+        });
+        // Invertir el orden para obtener sentido horario
+        this.#puntos.reverse();
     }
 
     // Método para determinar si el polígono es cóncavo o convexo
@@ -142,9 +142,8 @@ class Poligono {
 // Función para crear un nuevo polígono
 function generarNuevoPoligono() {
     const poligono = new Poligono(); // Crear un nuevo polígono
-    const canvas = document.getElementById('canvas'); // Obtener el contexto del canvas
-    const ctx = canvas.getContext('2d'); // Obtener el contexto 2D
-    poligono.dibujarPoligonoCanvas(ctx); // Dibujar el polígono
+    const canvas = document.getElementById('canvas'); // Obtener el contenedor Canvas
+    poligono.dibujarPoligonoCanvas(canvas); // Dibujar el polígono
     poligono.mostrarResultado(); // Mostrar si es cóncavo o convexo
 }
 

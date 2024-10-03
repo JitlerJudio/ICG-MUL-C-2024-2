@@ -65,28 +65,6 @@ class Poligono {
         polygon.setAttribute("stroke-width", "2");
         polygon.setAttribute("fill", "none");
         svg.appendChild(polygon);
-
-        // Calcular el centroide
-        const centroide = this.calcularCentroide();
-        
-        // Dibujar el centroide
-        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("cx", centroide.x);
-        circle.setAttribute("cy", centroide.y);
-        circle.setAttribute("r", 5);
-        circle.setAttribute("fill", "red");
-        svg.appendChild(circle);
-
-        // Dibujar líneas desde el centroide hasta cada punto
-        this.#puntos.forEach(p => {
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute("x1", centroide.x);
-            line.setAttribute("y1", centroide.y);
-            line.setAttribute("x2", p.x);
-            line.setAttribute("y2", p.y);
-            line.setAttribute("stroke", "blue");
-            svg.appendChild(line);
-        });
     }
 
     // Método para calcular el centroide del polígono
@@ -103,6 +81,18 @@ class Poligono {
 
         // Calcular el promedio (centroide)
         return new Punto(sumaX / numPuntos, sumaY / numPuntos);
+    }
+
+    // Método que ordena los puntos en sentido horario
+    ordenarPuntosSentidoHorario() {
+        const centroide = this.calcularCentroide();
+        this.#puntos.sort((a, b) => {
+            const anguloA = Math.atan2(a.y - centroide.y, a.x - centroide.x);
+            const anguloB = Math.atan2(b.y - centroide.y, b.x - centroide.x);
+            return anguloA - anguloB; // Ordenar en sentido antihorario
+        });
+        // Invertir el orden para obtener sentido horario
+        this.#puntos.reverse();
     }
 
     // Método para determinar si el polígono es cóncavo o convexo
@@ -141,12 +131,19 @@ class Poligono {
         const resultado = this.esConcavoOConvexo();
         document.getElementById('resultado').innerText = `El polígono es: ${resultado}`;
     }
+
+    // Método que dibuja el polígono en un contenedor SVG en sentido horario
+    dibujarPoligonoSVGHorario(svg) {
+        this.ordenarPuntosSentidoHorario(); // Ordenar los puntos en sentido horario
+        this.dibujarPoligonoSVG(svg); // Llamar al método existente para dibujar
+    }
 }
 
 // Función para crear un nuevo polígono
 function generarNuevoPoligono() {
     const poligono = new Poligono(); // Crear un nuevo polígono
     const svg = document.getElementById('svg'); // Obtener el contenedor SVG
+    poligono.ordenarPuntosSentidoHorario(); // Ordenar los puntos en sentido horario
     poligono.dibujarPoligonoSVG(svg); // Dibujar el polígono
     poligono.mostrarResultado(); // Mostrar si es cóncavo o convexo
 }
@@ -156,3 +153,8 @@ generarNuevoPoligono();
 
 // Asociar el evento click del botón a la función que genera un nuevo polígono
 document.getElementById('generarPoligonoBtn').addEventListener('click', generarNuevoPoligono);
+document.getElementById('generarPoligonoHorarioBtn').addEventListener('click', () => {
+    const poligono = new Poligono(); // Crear un nuevo polígono
+    const svg = document.getElementById('svg'); // Obtener el contenedor SVG
+    poligono.dibujarPoligonoSVGHorario(svg); // Dibujar el polígono en sentido horario
+});
