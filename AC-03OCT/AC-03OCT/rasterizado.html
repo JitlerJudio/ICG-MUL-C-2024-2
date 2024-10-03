@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polígono Cóncavo o Convexo - Rasterizado</title>
+    <style>
+        #canvasContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Figura Poligonal (Rasterizado)</h1>
+
+    <!-- Botón para generar un nuevo polígono -->
+    <button id="generarPoligonoBtn">Generar nuevo polígono</button>
+
+    <!-- Contenedor donde se dibuja el polígono en el canvas -->
+    <div id="canvasContainer">
+        <!-- Canvas donde se dibujará el polígono -->
+        <canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+    </div>
+
+    <!-- Texto donde se mostrará si el polígono es cóncavo o convexo -->
+    <h2 id="resultado"></h2>
+
+    <!-- Enlace al script JS -->
+    <script src="rasterizado.js"></script>
+</body>
+</html>
