@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulación de Relleno y Recorte</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        #controls {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button onclick="applyFloodFill()">Rellenar Polígono</button>
+        <button onclick="applyCohenSutherland()">Recortar Línea</button>
+    </div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script src="Recorte_relleno.js"></script>
+</body>
+</html>
